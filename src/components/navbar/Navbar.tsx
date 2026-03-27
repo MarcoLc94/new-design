@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./Navbar.css";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const Navbar = () => {
   const navbarRef = useRef<HTMLSpanElement | null>(null);
@@ -9,6 +10,8 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (!navbarRef.current || !imgRef.current || !navContainerRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ paused: true });
@@ -90,6 +93,18 @@ export const Navbar = () => {
 
       window.addEventListener("navbarPlay", handlePlay);
       window.addEventListener("navbarReverse", handleReverse);
+
+      // ---- Scroll trigger para fondo y repeticion de la animacion ----
+      ScrollTrigger.create({
+        start: "top -50",
+        onEnter: () => {
+          gsap.to(navContainerRef.current, { backgroundColor: "#2d2d2d", duration: 0.3 });
+          tl.restart();
+        },
+        onLeaveBack: () => {
+          gsap.to(navContainerRef.current, { backgroundColor: "transparent", duration: 0.3 });
+        }
+      });
 
       return () => {
         window.removeEventListener("navbarPlay", handlePlay);

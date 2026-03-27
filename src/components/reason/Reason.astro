@@ -6,21 +6,146 @@ import "./Reason.css";
   <div class="question-container">
     <h1>¿Por qué Bit Farm?</h1>
     <ul>
-      <li>Desarrollo de software personalizado</li>
-      <li>Integración de IA en tus procesos</li>
-      <li>APIs y conexiones entre sistemas</li>
-      <li>Soporte técnico continuo</li>
+      <li>
+        <span class="material-symbols-outlined">check_circle</span> Desarrollo de
+        software personalizado
+      </li>
+      <li>
+        <span class="material-symbols-outlined">auto_awesome</span> Integración de
+        IA en tus procesos
+      </li>
+      <li>
+        <span class="material-symbols-outlined">hub</span> APIs y conexiones entre
+        sistemas
+      </li>
+      <li>
+        <span class="material-symbols-outlined">support_agent</span> Soporte técnico
+        continuo
+      </li>
     </ul>
   </div>
   <div class="explain-container">
-    <img src="" alt="" />
-    <h2>Software + IA: el futuro de tu operación.</h2>
-    <p>
-      En BitFarm combinamos desarrollo de software a la medida con las
-      tecnologías de inteligencia artificial más avanzadas. No vendemos
-      productos genéricos: diseñamos, construimos e implementamos soluciones que
-      se adaptan a la realidad de tu negocio, automatizando lo repetitivo para
-      que tu equipo se enfoque en lo estratégico.
+    <img src="/assets/ilustracion-img-1.png" class="photo-reason" alt="" />
+    <h2 class="reason-title">
+      <span class="title-line">Software + IA:</span><br />
+      <span class="title-line">el futuro de tu operación.</span>
+    </h2>
+    <p class="reason-paragraph">
+      <span class="p-line">En BitFarm combinamos desarrollo de software a la medida con las</span>
+      <span class="p-line">tecnologías de inteligencia artificial más avanzadas. No vendemos</span>
+      <span class="p-line">productos genéricos: diseñamos, construimos e implementamos</span>
+      <span class="p-line">soluciones que se adaptan a la realidad de tu negocio,</span>
+      <span class="p-line">automatizando lo repetitivo para que tu equipo se enfoque</span>
+      <span class="p-line">en lo estratégico.</span>
     </p>
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // --- 1. ANIMACIÓN DE ENTRADA (Mecánica Fluida) ---
+  const entranceTrigger = {
+    trigger: ".reason-container",
+    start: "top 85%", 
+    toggleActions: "play none play reverse", // Play al entrar desde abajo Y desde arriba, Reverse solo al salir por abajo
+  };
+
+  gsap.from(".question-container h1", {
+    scrollTrigger: entranceTrigger,
+    opacity: 0, x: -50, duration: 0.8
+  });
+
+  gsap.from(".question-container li", {
+    scrollTrigger: entranceTrigger,
+    opacity: 0, x: -30, stagger: 0.1, duration: 0.6
+  });
+
+  gsap.from(".title-line, .p-line", {
+    scrollTrigger: entranceTrigger,
+    opacity: 0, y: 30, stagger: 0.05, duration: 0.7
+  });
+
+  gsap.from(".photo-reason", {
+    scrollTrigger: entranceTrigger,
+    x: 100,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  // --- 2. PARALLAX INTERACTIVO ---
+  // (Mantener igual)
+  window.addEventListener("mousemove", (e) => {
+    const xPos = (e.clientX / window.innerWidth - 0.5) * 2;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 2;
+
+    gsap.to(".photo-reason", {
+      x: xPos * 25,
+      y: yPos * 20,
+      duration: 1.5,
+      ease: "power1.out",
+      overwrite: "auto"
+    });
+  });
+
+  // --- 3. ANIMACIÓN DE SALIDA - DISPERSIÓN (Scrub al pasar el techo) ---
+  const exitSettings = {
+    trigger: ".reason-container",
+    start: "top top", 
+    end: "bottom top", // Volvemos a un end generoso para que no salgan "muy rápido"
+    scrub: true,
+  };
+
+  // Dispersar bloque izquierdo
+  gsap.to(".question-container h1", {
+    scrollTrigger: exitSettings,
+    x: -150,
+    opacity: 0,
+    filter: "blur(10px)",
+    ease: "none",
+  });
+
+  gsap.to(".question-container li", {
+    scrollTrigger: exitSettings,
+    x: (i) => -100 - i * 40,
+    y: (i) => -20 - i * 20,
+    opacity: 0,
+    filter: "blur(8px)",
+    stagger: 0.05,
+    ease: "none",
+  });
+
+  // Dispersar bloque derecho (Línea por línea)
+  gsap.to(".title-line", {
+    scrollTrigger: exitSettings,
+    x: (i) => 150 + i * 60,
+    rotation: (i) => 5 + i * 2,
+    opacity: 0,
+    filter: "blur(12px)",
+    ease: "none",
+  });
+
+  gsap.to(".p-line", {
+    scrollTrigger: exitSettings,
+    x: (i) => 100 + i * 20,
+    y: (i) => 30 + i * 10,
+    opacity: 0,
+    filter: "blur(6px)",
+    ease: "none",
+  });
+
+  // Salida foto
+  gsap.to(".photo-reason", {
+    scrollTrigger: exitSettings,
+    x: -500, 
+    y: -50,
+    scale: 0.7,
+    opacity: 0,
+    filter: "blur(15px)",
+    ease: "none",
+  });
+</script>

@@ -1,8 +1,10 @@
 .container {
   height: 100vh;
-  position: relative;
+  position: sticky;
+  top: 0;
   overflow: hidden;
   background-color: #000;
+  z-index: 0;
 }
 
 .hero-bg {
@@ -37,13 +39,14 @@
   left: 10%;
   top: 40%;
   transform: translateY(-50%);
+  pointer-events: auto; /* Enable clicks for buttons */
 }
 
 .parallax-text {
   color: white;
   font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 5vw;
+  font-weight: 400;
+  font-size: 3.15vw;
   line-height: 1.1;
   text-transform: uppercase;
   margin: 0;
@@ -51,21 +54,79 @@
 }
 
 .parallax-text span {
+  display: inline-block;
+}
+
+.parallax-text span.text-highlight {
   color: #00b63e;
+  font-weight: 700;
+}
+
+.parallax-subtitle {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.05vw;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.parallax-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary, .btn-secondary {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.8vw;
+  padding: 9px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #00b63e;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 182, 62, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #009934;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(0, 182, 62, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
 }
 
 .character-img {
   position: absolute;
-  right: 0;
+  left: 35vw;
   bottom: 0;
-  height: 90vh;
-  max-width: 50vw;
+  height: 108vh;
+  max-width: 90vw;
   object-fit: contain;
   object-position: bottom right;
   z-index: 3;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.8));
 }
 
-.phase2-container {
+.hero-splash {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,7 +137,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  opacity: 1;
 }
 
 .splash-content {

@@ -7,43 +7,72 @@ import "./Solutions.css";
 
   <div class="items-container">
     <div class="item">
-      <img src="" alt="" />
-      <h3>Lorem, ipsum dolor.</h3>
+      <span class="material-symbols-outlined item-icon">terminal</span>
+      <h3>Desarrollo a la medida</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda,
-        distinctio!
+        Aplicaciones web y móviles diseñadas específicamente para tu operación y modelo de negocio.
       </p>
     </div>
     <div class="item">
-      <img src="" alt="" />
-      <h3>Lorem, ipsum dolor.</h3>
+      <span class="material-symbols-outlined item-icon">neurology</span>
+      <h3>Integración de IA</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, deserunt!
+        Incorporamos modelos de lenguaje, visión artificial y machine learning en tus sistemas existentes.
       </p>
     </div>
     <div class="item">
-      <img src="" alt="" />
-      <h3>Lorem, ipsum dolor.</h3>
+      <span class="material-symbols-outlined item-icon">settings_suggest</span>
+      <h3>Automatización de procesos</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam,
-        dignissimos.
+        Eliminamos tareas manuales conectando tus herramientas con flujos inteligentes y APIs.
       </p>
     </div>
     <div class="item">
-      <img src="" alt="" />
-      <h3>Lorem, ipsum dolor.</h3>
+      <span class="material-symbols-outlined item-icon">smart_toy</span>
+      <h3>Asistentes virtuales</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta,
-        dolorem!
+        Chatbots y agentes con IA que atienden clientes, procesan datos y ejecutan acciones 24/7.
       </p>
     </div>
     <div class="item">
-      <img src="" alt="" />
-      <h3>Lorem, ipsum dolor.</h3>
+      <span class="material-symbols-outlined item-icon">rocket_launch</span>
+      <h3>Consultoría tecnológica</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-        molestiae?
+        Te ayudamos a identificar oportunidades de mejora y diseñar tu roadmap de transformación digital.
       </p>
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animación de entrada de las tarjetas
+  gsap.from(".solutions-container h1", {
+    scrollTrigger: {
+      trigger: ".solutions-container",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: -30,
+    duration: 1,
+    ease: "power3.out",
+  });
+
+  gsap.from(".item", {
+    scrollTrigger: {
+      trigger: ".items-container",
+      start: "top 85%",
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.15,
+    duration: 0.8,
+    ease: "back.out(1.2)",
+  });
+</script>

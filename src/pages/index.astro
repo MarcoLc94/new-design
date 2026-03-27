@@ -3,6 +3,9 @@ import { Navbar } from "../components/navbar/Navbar";
 import Layout from "../layouts/Layout.astro";
 import "../styles/reset.css";
 import { Initial } from "./initial/Initial.tsx";
+import Reason from "../components/reason/Reason.astro";
+import Solutions from "../components/solutions/Solutions.astro";
+import { Advices } from "../components/advices/Advices.tsx";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -11,4 +14,7 @@ import { Initial } from "./initial/Initial.tsx";
 <Layout>
   <Navbar client:load />
   <Initial client:load />
+  <Reason />
+  <Solutions />
+  <Advices client:load />
 </Layout>

@@ -6,12 +6,67 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+  position: relative;
+  z-index: 10;
 
   .question-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start; /* Cambié a start para mejor alineación de lista */
     justify-content: center;
+
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        color: #444;
+
+        span {
+          color: #38b549; /* Color solicitado */
+          font-variation-settings: "FILL" 1;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .explain-container {
+    position: relative; 
+    padding-top: 15vw; /* Espacio para que el texto no se tape con la imagen */    
+    .reason-title {
+      color: #333;
+      .title-line {
+        display: block;
+      }
+    }
+    .reason-paragraph {
+      margin-top: 15px;
+      .p-line {
+        display: block;
+        line-height: 1.4;
+      }
+    }
+    .photo-reason {
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 80%; /* Ajuste de tamaño sugerido */
+      transform: translateY(-40%); /* 40% sobresaliendo hacia arriba */
+      z-index: 15; /* Asegurar que esté por encima de otros elementos */
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
+    }
   }
 }

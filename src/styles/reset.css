@@ -25,3 +25,40 @@ html,
 body {
   height: 100%;
 }
+
+/* Custom Scrollbar (Siempre visible) */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #1a1a1a;
+  display: block;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00B63E;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #009934;
+}
+
+/* Lenis Smooth Scroll base setup */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
