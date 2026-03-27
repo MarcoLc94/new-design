@@ -1,0 +1,17 @@
+.reason-container {
+  background-color: white;
+  padding: 5% 10% 5% 10%;
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  .question-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+}

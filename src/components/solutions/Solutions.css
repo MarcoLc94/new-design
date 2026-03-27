@@ -1,0 +1,18 @@
+.solutions-container {
+  background-color: #2d2d2d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  gap: 20px;
+
+  h1 {
+    color: white;
+  }
+
+  .items-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
